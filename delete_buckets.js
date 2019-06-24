@@ -18,7 +18,7 @@ standard_input.on('data', function (name) {
 	};
 
 
-	let returnBuckets = function() {
+	let returnObjects = function() {
 		return new Promise(function(resolve, reject) {
 			s3.listObjects(bucketParams, function(err, objects) {
 				if (err) {
@@ -51,7 +51,7 @@ standard_input.on('data', function (name) {
 	}
 
 
-	returnBuckets()
+	returnObjects()
 	.then(function(objects) {emptyBucket(objects)})
 	.then(function() {
 		s3.deleteBucket(bucketParams, function(err, data) {
